@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef TRUNNDEGREES_H
-#define TRUNNDEGREES_H
+#ifndef TURNNDEGREES_H
+#define TURNNDEGREES_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,14 +21,16 @@
  *
  * @author ExampleAuthor
  */
-class TrunNDegrees: public Command {
+class TurnNDegrees: public Command {
 public:
-	TrunNDegrees();
+	TurnNDegrees(float);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+
+	float angleneeded;
 };
 
 #endif

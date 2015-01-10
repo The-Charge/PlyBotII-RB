@@ -23,12 +23,14 @@
  */
 class DriveXFeet: public Command {
 public:
-	DriveXFeet();
+	DriveXFeet(float);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+
+	float xneeded;
 };
 
 #endif
