@@ -42,5 +42,8 @@ public:
 	virtual void TeleopInit();
 	virtual void TeleopPeriodic();
 	virtual void TestPeriodic();
+
+	//mecanum drive passing 2 angles and rotation angle.
+	void drive(float x, float y, float x);
 };
 #endif
