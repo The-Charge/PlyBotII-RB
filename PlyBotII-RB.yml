@@ -12,7 +12,11 @@ Children:
             default: Talon
             name: Type
             validators: null
+<<<<<<< HEAD
             value: TalonSRX
+=======
+            value: Victor
+>>>>>>> origin/bailey
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
             choices: &id002 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
               '11', '12', '13', '14', '15', '16', '17', '18', '19']
@@ -21,7 +25,11 @@ Children:
             validators: &id003 [PWMOutput]
             value: '0'
         Base: Speed Controller
+<<<<<<< HEAD
         Name: LeftFrontMotor
+=======
+        Name: Speed Controller 1
+>>>>>>> origin/bailey
       - Children: []
         Properties:
           Type: !!robotbuilder.data.properties.ChoicesProperty
@@ -29,7 +37,11 @@ Children:
             default: Talon
             name: Type
             validators: null
+<<<<<<< HEAD
             value: Talon
+=======
+            value: Victor
+>>>>>>> origin/bailey
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
             choices: *id002
             default: '0'
@@ -37,7 +49,11 @@ Children:
             validators: *id003
             value: '1'
         Base: Speed Controller
+<<<<<<< HEAD
         Name: LeftRearMotor
+=======
+        Name: Speed Controller 2
+>>>>>>> origin/bailey
       - Children: []
         Properties:
           Type: !!robotbuilder.data.properties.ChoicesProperty
@@ -45,7 +61,11 @@ Children:
             default: Talon
             name: Type
             validators: null
+<<<<<<< HEAD
             value: Talon
+=======
+            value: Victor
+>>>>>>> origin/bailey
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
             choices: *id002
             default: '0'
@@ -53,7 +73,11 @@ Children:
             validators: *id003
             value: '2'
         Base: Speed Controller
+<<<<<<< HEAD
         Name: RightFrontMotor
+=======
+        Name: Speed Controller 3
+>>>>>>> origin/bailey
       - Children: []
         Properties:
           Type: !!robotbuilder.data.properties.ChoicesProperty
@@ -61,7 +85,11 @@ Children:
             default: Talon
             name: Type
             validators: null
+<<<<<<< HEAD
             value: Talon
+=======
+            value: Victor
+>>>>>>> origin/bailey
           Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
             choices: *id002
             default: '0'
@@ -69,7 +97,11 @@ Children:
             validators: *id003
             value: '3'
         Base: Speed Controller
+<<<<<<< HEAD
         Name: RightRearMotor
+=======
+        Name: Speed Controller 4
+>>>>>>> origin/bailey
       Properties:
         Sensitivity: !!robotbuilder.data.properties.DoubleProperty {default: 0.5,
           name: Sensitivity, validators: null, value: 0.5}
@@ -78,27 +110,45 @@ Children:
           name: Right Rear Motor
           type: PIDOutput
           validators: [RobotDrive4, ChildDropdownSelected]
+<<<<<<< HEAD
           value: DriveTrain RightRearMotor
+=======
+          value: DriveTrain Speed Controller 4
+>>>>>>> origin/bailey
         Right Front Motor: !!robotbuilder.data.properties.ChildSelectionProperty
           default: 2
           name: Right Front Motor
           type: PIDOutput
           validators: [RobotDrive4, ChildDropdownSelected]
+<<<<<<< HEAD
           value: DriveTrain RightFrontMotor
+=======
+          value: DriveTrain Speed Controller 3
+>>>>>>> origin/bailey
         Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Maximum Output, validators: null, value: 1.0}
         Left Front Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
           default: false, name: Left Front Motor Inverted, validators: null, value: false}
         Right Front Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
+<<<<<<< HEAD
           default: false, name: Right Front Motor Inverted, validators: null, value: true}
+=======
+          default: false, name: Right Front Motor Inverted, validators: null, value: false}
+>>>>>>> origin/bailey
         Left Rear Motor: !!robotbuilder.data.properties.ChildSelectionProperty
           default: 1
           name: Left Rear Motor
           type: PIDOutput
           validators: [RobotDrive4, ChildDropdownSelected]
+<<<<<<< HEAD
           value: DriveTrain LeftRearMotor
         Right Rear Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
           default: false, name: Right Rear Motor Inverted, validators: null, value: true}
+=======
+          value: DriveTrain Speed Controller 2
+        Right Rear Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
+          default: false, name: Right Rear Motor Inverted, validators: null, value: false}
+>>>>>>> origin/bailey
         Safety Expiration Time: !!robotbuilder.data.properties.DoubleProperty {default: 0.1,
           name: Safety Expiration Time, validators: null, value: 0.1}
         Left Rear Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
@@ -110,6 +160,7 @@ Children:
           name: Left Front Motor
           type: PIDOutput
           validators: [RobotDrive4, ChildDropdownSelected]
+<<<<<<< HEAD
           value: DriveTrain LeftFrontMotor
       Base: Robot Drive 4
       Name: MotorController
@@ -257,6 +308,11 @@ Children:
           value: '0'
       Base: Gyro
       Name: MainGyro
+=======
+          value: DriveTrain Speed Controller 1
+      Base: Robot Drive 4
+      Name: Robot Drive 4 1
+>>>>>>> origin/bailey
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: Drive}

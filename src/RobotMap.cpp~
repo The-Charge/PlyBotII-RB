@@ -29,6 +29,7 @@ void RobotMap::init() {
 	driveTrainLeftFrontMotor = new TalonSRX(0);
 	lw->AddActuator("DriveTrain", "LeftFrontMotor", (TalonSRX*) driveTrainLeftFrontMotor);
 	
+<<<<<<< HEAD
 	driveTrainLeftRearMotor = new Talon(1);
 	lw->AddActuator("DriveTrain", "LeftRearMotor", (Talon*) driveTrainLeftRearMotor);
 	
@@ -37,6 +38,16 @@ void RobotMap::init() {
 	
 	driveTrainRightRearMotor = new Talon(3);
 	lw->AddActuator("DriveTrain", "RightRearMotor", (Talon*) driveTrainRightRearMotor);
+=======
+	driveTrainLeftRearMotor = new TalonSRX(1);
+	lw->AddActuator("DriveTrain", "LeftRearMotor", (TalonSRX*) driveTrainLeftRearMotor);
+	
+	driveTrainRightFrontMotor = new TalonSRX(2);
+	lw->AddActuator("DriveTrain", "RightFrontMotor", (TalonSRX*) driveTrainRightFrontMotor);
+	
+	driveTrainRightRearMotor = new TalonSRX(3);
+	lw->AddActuator("DriveTrain", "RightRearMotor", (TalonSRX*) driveTrainRightRearMotor);
+>>>>>>> origin/bailey
 	
 	driveTrainRobotDrive41 = new RobotDrive(driveTrainLeftFrontMotor, driveTrainLeftRearMotor,
               driveTrainRightFrontMotor, driveTrainRightRearMotor);
