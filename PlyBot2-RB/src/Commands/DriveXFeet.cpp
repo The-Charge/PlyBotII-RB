@@ -28,6 +28,8 @@ void DriveXFeet::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveXFeet::Execute() {
+	//Robot::driveTrain->drive(0, .25, 0);
+
 	Robot :: driveTrain -> drive(0, .25, 0);
 }
 

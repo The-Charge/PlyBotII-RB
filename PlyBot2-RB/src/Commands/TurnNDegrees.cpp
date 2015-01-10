@@ -22,8 +22,9 @@ TurnNDegrees::TurnNDegrees(float x) {
 
 // Called just before this Command runs the first time
 void TurnNDegrees::Initialize() {
-	Robot:: driveTrain -> driveGyro -> Reset();
-}
+	StartAngle = Robot:: driveTrain -> driveGyro -> GetAngle();
+
+		}
 
 // Called repeatedly when this Command is scheduled to run
 void TurnNDegrees::Execute() {
@@ -34,6 +35,7 @@ void TurnNDegrees::Execute() {
 bool TurnNDegrees::IsFinished() {
 	int currentangle = Robot:: driveTrain -> driveGyro -> GetAngle();
 	//degrees wanted to turn
+	angleneeded = angleneeded + StartAngle;
 		if (currentangle >= angleneeded) return true;
 		else return false;}
 

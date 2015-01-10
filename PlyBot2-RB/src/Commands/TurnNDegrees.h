@@ -23,14 +23,14 @@
  */
 class TurnNDegrees: public Command {
 public:
+	float angleneeded;
+	float StartAngle;
 	TurnNDegrees(float);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-
-	float angleneeded;
 };
 
 #endif
