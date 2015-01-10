@@ -9,26 +9,20 @@
 // it from being updated in the future.
 
 
-#ifndef QUARTERTURNC_H
-#define QUARTERTURNC_H
 
+#ifndef AUTONOMOUSGROUP_H
+#define AUTONOMOUSGROUP_H
 
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "Commands/CommandGroup.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class QuarterTurnC: public Command {
-public:
-	QuarterTurnC();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
+class AutonomousGroup: public CommandGroup {
+public:	
+	AutonomousGroup();
 };
 
 #endif
