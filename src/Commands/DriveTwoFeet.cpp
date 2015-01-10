@@ -21,6 +21,7 @@ DriveTwoFeet::DriveTwoFeet() {
 
 // Called just before this Command runs the first time
 void DriveTwoFeet::Initialize() {
+	Robot::driveTrain ->
 	
 }
 
