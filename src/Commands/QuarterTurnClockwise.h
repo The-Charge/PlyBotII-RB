@@ -23,6 +23,7 @@
  */
 class QuarterTurnClockwise: public Command {
 public:
+	float StartAngle;
 	QuarterTurnClockwise();
 	virtual void Initialize();
 	virtual void Execute();
