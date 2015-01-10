@@ -20,27 +20,52 @@ DriveTwoFeet::DriveTwoFeet() {
 }
 
 // Called just before this Command runs the first time
-void DriveTwoFeet::Initialize() {
-	
+void DriveTwoFeet::Initialize()
+{
+	//Reset quadrature encoder:
+		//Only one because we are only going to measure one
+	Robot::driveTrain->leftFrontEncoder->Reset();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DriveTwoFeet::Execute() {
-	
+void DriveTwoFeet::Execute()
+{
+	//Set motors:
+		//Has been done in the drive train
+		//To set the speed to a quarter, .25 in front of y input from joystick
+		//0 for x because just going forward
+		//0 for z, just going forward
+	Robot::driveTrain->drive(0, .25y, 0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveTwoFeet::IsFinished() {
-	return false;
+bool DriveTwoFeet::IsFinished()
+{
+	int ticks = Robot::driveTrain->leftFrontEncoder->Get();
+		//Trying to get the distance, but need ticks (pg 175 in maual)
+	int ticksNeeded = Robot::driveTrain-> WHEELROTATIONS_PER_FOOT * ENCODERTICKS_PER_REVOLUTION;
+	ticksNeeded = 2 * ticksNeeded;
+		// 2 * (number of wheel rotations in one ft) * (number of ticks in one rotation)
+		//this when you get this many, you stop
+
+	//---------Check if finished----------
+	if(ticks >= ticksNeeded) return true;
+	else return false;
+	//Now make sure robot stops after this
 }
 
 // Called once after isFinished returns true
-void DriveTwoFeet::End() {
+void DriveTwoFeet::End()
+{
+	//This method is automatically called when IsFinished() returns false
 	
+	Robot::driveTrain->dive(0,0,0);
+		//set the "input" of everything to 0 so it no longer moves
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveTwoFeet::Interrupted() {
-
+void DriveTwoFeet::Interrupted()
+{
+	End();
 }
