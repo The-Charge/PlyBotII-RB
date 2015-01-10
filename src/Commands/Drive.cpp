@@ -27,7 +27,10 @@ void Drive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Drive::Execute() {
-	
+	float x = Robot::oi->getJoystick1()->GetX();
+	float y = Robot::oi->getJoystick1()->GetY();
+	float z = Robot::oi->getJoystick1()->GetZ();
+	Robot::driveTrain->drive(x,y,z);
 }
 
 // Make this return true when this Command no longer needs to run execute()
