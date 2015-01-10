@@ -11,8 +11,8 @@
 
 
 #include "AutonomousGroup.h"
-#include "DriveTwoFeet.h"
-#include "QuarterTurnClockwise.h"
+#include "DriveTwoFeet.h" // calls the .h file needed to execute the code bellow
+#include "QuarterTurnClockwise.h" // calls the .h file needed to execute the code bellow
 
 AutonomousGroup::AutonomousGroup() {
 	// Add Commands here:
@@ -31,6 +31,8 @@ AutonomousGroup::AutonomousGroup() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
+
+	// Tells the robot to run these commands and executes them in this order
 	AddSequential(new DriveTwoFeet());
 	AddSequential(new QuarterTurnClockwise());
 	AddSequential(new DriveTwoFeet());
