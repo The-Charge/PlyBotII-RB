@@ -21,9 +21,11 @@
  *
  * @author ExampleAuthor
  */
+
 class DriveXFeet: public Command {
 public:
-	DriveXFeet();
+	float FeettoDrive;
+	DriveXFeet(float feet);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
