@@ -46,3 +46,8 @@ void DriveTrain::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
+void DriveTrain::drive(float x, float y, float z)
+{
+	robotDrive4Motors->MecanumDrive_Cartesian(x,y,z);
+
+}
