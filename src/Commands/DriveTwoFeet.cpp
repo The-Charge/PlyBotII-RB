@@ -21,26 +21,37 @@ DriveTwoFeet::DriveTwoFeet() {
 
 // Called just before this Command runs the first time
 void DriveTwoFeet::Initialize() {
+	Robot::driveTrain->leftFrontMotorQuadratureEncoder->Reset()
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveTwoFeet::Execute() {
+	Robot::driveTrain->drive(0, .25, 0);
 	
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveTwoFeet::IsFinished() {
+	int ticks = Robot::driveTrain->leftFrontMotorQuadratureEncoder->Get();
+	int ticks_needed = Robot::driveTrain->WHEEL_ROTATION_PER_FOOT * Robot::driveTrain->ENCODER_TICKS_PER_REVOLUTION * 2;
+	if(ticks >= ticks_needed)
+		{
+		return true;
+
+	}
 	return false;
 }
 
 // Called once after isFinished returns true
 void DriveTwoFeet::End() {
+	Robot::driveTrain-> drive (0, 0, 0);
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void DriveTwoFeet::Interrupted() {
+End();
 
 }
