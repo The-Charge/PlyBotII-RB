@@ -11,6 +11,8 @@
 
 
 #include "AutonomusGroup.h"
+#include "DriveTwoFeet.h"
+#include "QuarterTurnClockwise.h"
 
 AutonomusGroup::AutonomusGroup() {
 	// Add Commands here:
