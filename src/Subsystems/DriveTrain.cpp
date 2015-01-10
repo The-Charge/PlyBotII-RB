@@ -45,6 +45,13 @@ void DriveTrain::InitDefaultCommand() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+
+/**
+ * Drives the chasis using cartesian coordinates
+ * @param x Magnitude along x axis
+ * @param y Magnitude along y axis
+ * @param z Magnitude along z axis
+ */
 void DriveTrain::drive(float x, float y, float z) {
 	robotDrive41->MecanumDrive_Cartesian(x,y,z);
 }

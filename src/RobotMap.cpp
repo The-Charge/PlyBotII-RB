@@ -34,10 +34,10 @@ void RobotMap::init() {
 	driveTrainLeftFrontMotor = new TalonSRX(0);
 	lw->AddActuator("DriveTrain", "LeftFrontMotor", (TalonSRX*) driveTrainLeftFrontMotor);
 	
-	driveTrainLeftRearMotor = new TalonSRX(2);
+	driveTrainLeftRearMotor = new TalonSRX(1);
 	lw->AddActuator("DriveTrain", "LeftRearMotor", (TalonSRX*) driveTrainLeftRearMotor);
 	
-	driveTrainRightFrontMotor = new TalonSRX(1);
+	driveTrainRightFrontMotor = new TalonSRX(2);
 	lw->AddActuator("DriveTrain", "RightFrontMotor", (TalonSRX*) driveTrainRightFrontMotor);
 	
 	driveTrainRightRearMotor = new TalonSRX(3);

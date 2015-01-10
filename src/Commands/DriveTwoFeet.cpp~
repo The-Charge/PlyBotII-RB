@@ -44,7 +44,7 @@ bool DriveTwoFeet::IsFinished()
 {
 	int ticks = Robot::driveTrain->leftFrontEncoder->Get();
 		//Trying to get the distance, but need ticks (pg 175 in maual)
-	int ticksNeeded = Robot::driveTrain-> WHEELROTATIONS_PER_FOOT * ENCODERTICKS_PER_REVOLUTION;
+	int ticksNeeded = Robot::driveTrain-> WHEELROTATIONS_PER_FOOT * Robot::driveTrain->ENCODERTICKS_PER_REVOLUTION;
 	ticksNeeded = 2 * ticksNeeded;
 		// 2 * (number of wheel rotations in one ft) * (number of ticks in one rotation)
 		//this when you get this many, you stop
@@ -60,7 +60,7 @@ void DriveTwoFeet::End()
 {
 	//This method is automatically called when IsFinished() returns false
 	
-	Robot::driveTrain->dive(0,0,0);
+	Robot::driveTrain->drive(0,0,0);
 		//set the "input" of everything to 0 so it no longer moves
 }
 

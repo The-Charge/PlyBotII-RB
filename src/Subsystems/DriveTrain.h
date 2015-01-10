@@ -54,7 +54,14 @@ public:
 	DriveTrain();
 	void InitDefaultCommand();
 	// drive command drives the mecanum and parameters: x,y z as rotation
-	void drive(float, float, float);
+
+	/**
+	 * Drives the chasis using cartesian coordinates
+	 * @param x Magnitude along x axis
+	 * @param y Magnitude along y axis
+	 * @param z Magnitude along z axis
+	 */
+	void drive(float x, float y, float z);
 };
 
 #endif
