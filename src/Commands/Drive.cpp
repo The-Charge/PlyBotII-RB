@@ -39,6 +39,9 @@ void Drive::Execute() {
 	y = delinearize(y,alpha);
 	z = delinearize(z,alpha);
 
+	x = deadband(x,db);
+	y = deadband(y,db);
+	z = deadband(z,db);
 
 
 	Robot::driveTrain->drive(x,y,z);
@@ -55,10 +58,10 @@ return input;
 
 float Drive::deadband(float input, float db){
     if ((input > db) && (input<-db)){
-    	input = 0;
+    	input = input;
     }
     else{
-    	input = input;
+    	input = 0;
     }
     return input;
 }
