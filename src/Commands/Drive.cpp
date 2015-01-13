@@ -31,8 +31,31 @@ void Drive::Execute() {
 	float y = Robot::oi->getJoystick1()->GetY();
 	float z = Robot::oi->getJoystick1()->GetZ();
 	Robot::driveTrain->drive(x,y,z);
+	float alpha = Robot:: oi -> getJoystick1()->GetThrottle();
+	x = delinearize ( x, alpha);
+	y = delinearize (y, alpha);
+	z = delinearize ( z, alpha);
+	x = deadband ( x, alpha);
+	y = deadband ( y, alpha);
+	z = deadband (z, alpha);
 }
+float Drive::delinearize (float input, float alpha)
+// using the equation from the board at meeting 1-12-15
+{
+	input = ( alpha * input* input * input )+ ((1-alpha)*( input));
+	return input;
+}
+float Drive:: deadband (float input, float alpha)
+{
+	if (( input > .1) && (input < -.1)){
 
+			input = input ;
+	}
+else {input = 0;
+
+}
+	return input;
+	}
 // Make this return true when this Command no longer needs to run execute()
 bool Drive::IsFinished() {
 	return false;
