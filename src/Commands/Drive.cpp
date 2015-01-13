@@ -51,6 +51,18 @@ return input;
 
 }
 
+
+float Drive::deadband(float input, float alpha){
+    if ((input > .1) && (input<-.1)){
+    	input = 0;
+    }
+    else{
+    	input = input;
+    }
+    return input;
+}
+
+
 // Make this return true when this Command no longer needs to run execute()
 bool Drive::IsFinished() {
 	return false;
