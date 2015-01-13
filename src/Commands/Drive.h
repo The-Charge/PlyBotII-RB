@@ -23,8 +23,10 @@
  */
 class Drive: public Command {
 private:
-  const std::string DELINEARIZATION_POWER_DASHBOARD_KEY="Drive::delinearizationPower";
-  const std::string JOYSTICK_DEADBAND_DASHBOARD_KEY="Drive::delinearizationPower";
+	const std::string DELINEARIZATION_POWER_DASHBOARD_KEY="Drive::delinearizationPower";
+	const std::string JOYSTICK_DEADBAND_DASHBOARD_KEY="Drive::delinearizationPower";
+	const double DELINEARIZATION_POWER_DEFAULT=5;
+	const double JOYSTICK_DEADBAND_DEFAULT=.5;
 public:
 	Drive();
 	virtual void Initialize();
