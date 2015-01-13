@@ -1,0 +1,7 @@
+*.o
+Debug/FRCUserProgram
+/Debug/
+.settings/language.settings.xml
+*.cpp~
+*.h~
+*.*~
