@@ -30,7 +30,31 @@ void Drive::Execute() {
 	float x = Robot::oi->getJoystick1()->GetX();
 	float y = Robot::oi->getJoystick1()->GetY();
 	float z = Robot::oi->getJoystick1()->GetZ();
+	float a = Robot::oi->getJoystick1()->GetThrottle();
+
+	//Delinerize
+	x = Delinearize(x, a);
+	y = Delinearize(y, a);
+	z = Delinearize(z, a);
+
+	//Deadband
+	static float deadband = .5;
+
+	if((x > deadband) && (x < -deadband)); //if it's not in the deadband, do nothing
+	else x = 0;
+
+	if((y > deadband) && (y < -deadband));
+	else y = 0;
+
+	if((z > deadband) && (z < -deadband));
+	else z = 0;
+
 	Robot::driveTrain->drive(x,y,z);
+}
+
+float Delinearize(float input, float alpha)
+{
+	return (alpha * input * input * input) + ((1-alpha) * input);
 }
 
 // Make this return true when this Command no longer needs to run execute()
