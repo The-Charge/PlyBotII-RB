@@ -34,6 +34,7 @@ void Drive::Execute() {
 	//Float delinearize (float input, float alpha);
 
 	float alpha = Robot :: oi->getJoystick1()->GetThrottle();
+	float db  = .05;
 	x = delinearize(x,alpha);
 	y = delinearize(y,alpha);
 	z = delinearize(z,alpha);
@@ -52,8 +53,8 @@ return input;
 }
 
 
-float Drive::deadband(float input, float alpha){
-    if ((input > .1) && (input<-.1)){
+float Drive::deadband(float input, float db){
+    if ((input > db) && (input<-db)){
     	input = 0;
     }
     else{
