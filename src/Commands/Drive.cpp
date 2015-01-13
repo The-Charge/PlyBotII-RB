@@ -32,12 +32,20 @@ float delinearize (float input, float alpha)
 	input = (alpha * input * input * input) + (( 1 - alpha) * input);
 	return input;
 }
+
 float deadband (float input, float db)
 {
-	if (input > db && input < -db)  db = input;
-	else db = 0;
-	return db;
+	if (input > db && input < -db)  input = input * 1;
+	else input = 0;
+	return input;
+	// return abs(input) >= abs(db) ? input : 0;
+		// if input >= abs (db) return input else return 0;
+	// if statement in one line.
 }
+
+// if (z!= 0) z = z;
+// else z = -GetRate();
+
 // Called repeatedly when this Command is scheduled to run
 void Drive::Execute() {
 	float x = Robot::oi->getJoystick1()->GetX();
@@ -51,14 +59,13 @@ void Drive::Execute() {
 	y = delinearize (y, alpha);
 	z = delinearize (z, alpha);
 
-	x = deadband (x, alpha);
-	y = deadband (y, alpha);
-	z = deadband (z, alpha);
+	float db = 0.05;
+	x = deadband (x, db);
+	y = deadband (y, db);
+	z = deadband (z, db);
 
 	Robot:: driveTrain -> drive (x, y, z);
 }
-
-
 
 // Make this return true when this Command no longer needs to run execute()
 bool Drive::IsFinished() {
