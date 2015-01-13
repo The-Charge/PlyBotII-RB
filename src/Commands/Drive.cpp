@@ -32,6 +32,10 @@ void Drive::Execute() {
 	float y = Robot::oi->getJoystick1()->GetY();
 	float z = Robot::oi->getJoystick1()->GetZ();
 	float throttle = Robot::oi->getJoystick1()->GetThrottle();
+
+	x = RobotMath::deadband(x,.05);
+	y = RobotMath::deadband(y,.05);
+	z = RobotMath::deadband(z,.05);
 	
 	x = RobotMath::delinearize(x,throttle,5);
 	y = RobotMath::delinearize(y,throttle,5);
