@@ -32,17 +32,33 @@ void Drive::Execute() {
 	float z = Robot::oi->getJoystick1()->GetZ();
 
 	float alpha = Robot::oi->getJoystick1()->GetThrottle();
+	float db = .05;
 
 	x = delinearize(x,alpha);
 	y = delinearize(y,alpha);
 	z = delinearize(z,alpha);
 
+	x = deadband(x,db);
+	y = deadband(y,db);
+	z = deadband(z, db);
 
 	Robot::driveTrain->drive(x,y,z);
 }
 float Drive::delinearize(float input, float alpha) {
 
 	input = (alpha * input * input * input) + ((1 - alpha) * input);
+	return input;
+
+}
+float Drive::deadband(float input, float db){
+
+	if ((input > db) && (input<-db)){
+		input = input;
+
+	}
+	else{
+		input = 0;
+	}
 	return input;
 
 }
