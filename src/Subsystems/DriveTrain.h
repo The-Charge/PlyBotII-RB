@@ -43,6 +43,7 @@ public:
 	const float WHEELCIRCUMFERENCE_IN_INCHES = WHEELDIAMETER_IN_INCHES * 3.14;
 		//finds the distance covered in one rotation
 	const float WHEELCIRCUMFERENCE_IN_FEET = WHEELCIRCUMFERENCE_IN_INCHES / 12;
+<<<<<<< HEAD
 		//distance covered in one rotation in feet
 	const float WHEELROTATIONS_PER_FOOT = 1/WHEELCIRCUMFERENCE_IN_FEET;
 		//rotations made in one foot
@@ -50,6 +51,10 @@ public:
 		//used in finding revs
 
 
+=======
+	const float WHEELROTATIONS_PER_FOOT = 1 / WHEELCIRCUMFERENCE_IN_FEET;
+	const int ENCODER_TICKS_PER_REVOLUTION = 220;
+>>>>>>> origin/master
 
 	DriveTrain();
 	void InitDefaultCommand();

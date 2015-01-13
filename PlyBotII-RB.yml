@@ -315,7 +315,11 @@ Children:
           validators: null
           value: whenPressed
       Base: Joystick Button
+<<<<<<< HEAD
       Name: QuarterTurnCWButton
+=======
+      Name: QuarterTurnB
+>>>>>>> origin/master
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: ['0', '1', '2', '3', '4', '5']
@@ -366,7 +370,11 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
+<<<<<<< HEAD
     Name: Autonomus Group
+=======
+    Name: Autonomous Group
+>>>>>>> origin/master
   - Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
@@ -374,7 +382,11 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
+<<<<<<< HEAD
     Name: DriveXft
+=======
+    Name: DriveXFeet
+>>>>>>> origin/master
   - Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
@@ -404,6 +416,10 @@ Properties:
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+<<<<<<< HEAD
     name: Autonomous Command, type: Command, validators: null, value: Autonomus Group}
+=======
+    name: Autonomous Command, type: Command, validators: null, value: Autonomous Group}
+>>>>>>> origin/master
 Base: Robot
 Name: PlyBotII-RB

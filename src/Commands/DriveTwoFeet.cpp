@@ -21,14 +21,19 @@ DriveTwoFeet::DriveTwoFeet() {
 }
 
 // Called just before this Command runs the first time
+<<<<<<< HEAD
 void DriveTwoFeet::Initialize()
 {
 	//Reset quadrature encoder:
 		//Only one because we are only going to measure one
+=======
+void DriveTwoFeet::Initialize() {
+>>>>>>> origin/master
 	Robot::driveTrain->leftFrontEncoder->Reset();
 }
 
 // Called repeatedly when this Command is scheduled to run
+<<<<<<< HEAD
 void DriveTwoFeet::Execute()
 {
 	//Set motors:
@@ -36,10 +41,14 @@ void DriveTwoFeet::Execute()
 		//To set the speed to a quarter, .25 in front of y input from joystick
 		//0 for x because just going forward
 		//0 for z, just going forward
+=======
+void DriveTwoFeet::Execute() {
+>>>>>>> origin/master
 	Robot::driveTrain->drive(0, .25, 0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
+<<<<<<< HEAD
 bool DriveTwoFeet::IsFinished()
 {
 	int ticks = Robot::driveTrain->leftFrontEncoder->Get();
@@ -62,11 +71,34 @@ void DriveTwoFeet::End()
 	
 	Robot::driveTrain->dive(0,0,0);
 		//set the "input" of everything to 0 so it no longer moves
+=======
+bool DriveTwoFeet::IsFinished() {
+	int TICKS = Robot::driveTrain->leftFrontEncoder->Get();
+	//Gets the ticks needed to drive 2 ft on the LeftFrontEncoder
+	int ticks_needed = Robot::driveTrain->WHEELROTATIONS_PER_FOOT * Robot::driveTrain->ENCODER_TICKS_PER_REVOLUTION * 2;
+
+	//Checks if the amount of ticks in at the correct or greater distance wanted
+	if (ticks_needed <= TICKS){
+		return true;
+	}
+	// if there are not enough ticks to stop the program/command
+		return false;
+
+}
+
+// Called once after isFinished returns true
+void DriveTwoFeet::End() {
+	Robot::driveTrain->drive(0,0,0); // Stops the Robot when the command is Finished
+>>>>>>> origin/master
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
+<<<<<<< HEAD
 void DriveTwoFeet::Interrupted()
 {
+=======
+void DriveTwoFeet::Interrupted() {
+>>>>>>> origin/master
 	End();
 }

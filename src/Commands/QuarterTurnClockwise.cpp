@@ -20,40 +20,33 @@ QuarterTurnClockwise::QuarterTurnClockwise() {
 }
 
 // Called just before this Command runs the first time
-void QuarterTurnClockwise::Initialize()
-{
-	Robot::driveTrain->driveGyro->Reset();
-		//Reset the 0 to current direction
-}
+void QuarterTurnClockwise::Initialize() {
+	 StartAngle = Robot::driveTrain->driveGyro->GetAngle(); // saves the current angle for comparing with wanted position
+	}
 
 // Called repeatedly when this Command is scheduled to run
-void QuarterTurnClockwise::Execute()
-{
-	Robot::driveTrain->drive(0, 0, .25);
-		//Turn at quarter speed right
+void QuarterTurnClockwise::Execute() {
+	Robot::driveTrain->drive(0,0,.25);
+	
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool QuarterTurnClockwise::IsFinished()
-{
-	int currentAngle = Robot::driveTrain->driveGyro->GetAngle();
-		//the current position
-	int endAngle = 90;
-		//the position we want to end at
+bool QuarterTurnClockwise::IsFinished() {
+	int Angle = Robot::driveTrain->driveGyro->GetAngle();//gets angle
 
-	if(currentAngle >= endAngle) return true;
+	if(Angle >= StartAngle + 90){//checks angle to see if in the right position by comparing it to StartAngle
+		return true;
+	}
 	return false;
 }
 
 // Called once after isFinished returns true
-void QuarterTurnClockwise::End()
-{
-	Robot::driveTrain->drive(0, 0, 0);
+void QuarterTurnClockwise::End() {
+	Robot::driveTrain->drive(0,0,0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void QuarterTurnClockwise::Interrupted()
-{
-	Robot::driveTrain->drive(0, 0, 0);
+void QuarterTurnClockwise::Interrupted() {
+	Robot::driveTrain->drive(0,0,0);
 }
