@@ -10,6 +10,7 @@
 
 
 #include "Drive.h"
+#include "../Util/RobotMath.h"
 
 Drive::Drive() {
 	// Use requires() here to declare subsystem dependencies
@@ -30,6 +31,11 @@ void Drive::Execute() {
 	float x = Robot::oi->getJoystick1()->GetX();
 	float y = Robot::oi->getJoystick1()->GetY();
 	float z = Robot::oi->getJoystick1()->GetZ();
+	float throttle = Robot::oi->getJoystick1()->GetThrottle();
+	
+	x = RobotMath::delinearize(x,throttle,5);
+	y = RobotMath::delinearize(y,throttle,5);
+	z = RobotMath::delinearize(z,throttle,5);
 	Robot::driveTrain->drive(x,y,z);
 }
 

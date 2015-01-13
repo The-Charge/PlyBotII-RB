@@ -21,7 +21,8 @@ $(OUT_DIR)$(EXECUTABLE): \
                   $(OBJ_DIR)quarter_turn_clockwise.o \
                   $(OBJ_DIR)drive_two_feet.o \
                   $(OBJ_DIR)autonomous_group.o \
-                  $(OBJ_DIR)autonomous_command.o 
+                  $(OBJ_DIR)autonomous_command.o \
+                  $(OBJ_DIR)robot_math.o 
 	$(CC) \
     $(OBJ_DIR)robot.o \
     $(OBJ_DIR)robotmap.o \
@@ -32,6 +33,7 @@ $(OUT_DIR)$(EXECUTABLE): \
     $(OBJ_DIR)drive_two_feet.o \
     $(OBJ_DIR)autonomous_group.o \
     $(OBJ_DIR)autonomous_command.o \
+    $(OBJ_DIR)robot_math.o \
   $(LIB_DIR) -lwpi \
   -o $(OUT_DIR)$(EXECUTABLE)
 
@@ -88,6 +90,13 @@ $(OBJ_DIR)autonomous_command.o : $(SOURCE_DIR)Commands/AutonomousCommand.cpp
   $(C_FLAGS) \
   $(SOURCE_DIR)Commands/AutonomousCommand.cpp \
   -o $(OBJ_DIR)autonomous_command.o
+
+$(OBJ_DIR)robot_math.o : $(SOURCE_DIR)Util/RobotMath.cpp
+	$(CC) \
+  $(C_FLAGS) \
+  $(SOURCE_DIR)Util/RobotMath.cpp \
+  -o $(OBJ_DIR)robot_math.o
+
 
 
 
