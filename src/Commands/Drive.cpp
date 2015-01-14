@@ -35,7 +35,7 @@ float delinearize (float input, float alpha)
 
 float deadband (float input, float db)
 {
-	if (input > db && input < -db)  input = input * 1;
+	if (input > db || input < -db)  input = input * 1;
 	else input = 0;
 	return input;
 	// return abs(input) >= abs(db) ? input : 0;
@@ -56,6 +56,12 @@ void Drive::Execute() {
 	float alpha = Robot::oi -> getJoystick1() -> GetThrottle();
 	float db = 0.05;
 
+	double GyroRate = Robot:: driveTrain -> GetGyroRate();
+	float GyroAngle = Robot:: driveTrain -> GetGyroAngle();
+
+	SmartDashboard :: PutNumber("The Gyro Rate: ", GyroRate);
+	SmartDashboard :: PutNumber ("The Gyro Angle: ", GyroAngle);
+
 	x = deadband (x, db);
 	y = deadband (y, db);
 	z = deadband (z, db);
@@ -64,10 +70,13 @@ void Drive::Execute() {
 	y = delinearize (y, alpha);
 	z = delinearize (z, alpha);
 
+	z = .25 * z;
+
 	// Disable y/z if button is held
 	if (Robot::oi -> getJoystick1() -> GetRawButton(4))
 	{
-
+		y = 0;
+		x = 0;
 	}
 
 	Robot:: driveTrain -> drive (x, y, z);

@@ -24,7 +24,6 @@ DriveTwoFeet::DriveTwoFeet() {
 void DriveTwoFeet::Initialize() {
 	SetTimeout(5);
 	Robot::driveTrain->leftFrontEncoder->Reset();
-
 }
 
 // Called repeatedly when this Command is scheduled to run

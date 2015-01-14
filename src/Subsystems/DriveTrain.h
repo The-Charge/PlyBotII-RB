@@ -48,6 +48,12 @@ public:
 	void InitDefaultCommand();
 	// drive command drives the mecanum and parameters: x,y z as rotation
 	void drive(float, float, float);
+
+	float GetGyroAngle();
+	double GetGyroRate();
+
+	//getter, setter, executer, constructor
+
 };
 
 #endif
