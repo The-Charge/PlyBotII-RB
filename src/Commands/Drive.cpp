@@ -58,7 +58,7 @@ void Drive::Execute() {
 		z = 0;
 	}
 
-	Robot::driveTrain->drive(x,y,z);
+	Robot::driveTrain->drive(x,y,z/3);
 }
 
 // Make this return true when this Command no longer needs to run execute()
