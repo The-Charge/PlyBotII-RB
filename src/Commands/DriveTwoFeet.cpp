@@ -22,7 +22,8 @@ DriveTwoFeet::DriveTwoFeet() {
 
 // Called just before this Command runs the first time
 void DriveTwoFeet::Initialize() {
-	Robot::driveTrain->leftFrontEncoder->Reset();
+	SetTimeout(5.0); // sets a timer to automatically disable the code in case of a sensor fail
+	Robot::driveTrain->leftFrontEncoder->Reset(); // resets encoder
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -32,12 +33,15 @@ void DriveTwoFeet::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveTwoFeet::IsFinished() {
+
 	int TICKS = Robot::driveTrain->leftFrontEncoder->Get();
 	//Gets the ticks needed to drive 2 ft on the LeftFrontEncoder
 	int ticks_needed = Robot::driveTrain->WHEELROTATIONS_PER_FOOT * Robot::driveTrain->ENCODER_TICKS_PER_REVOLUTION * 2;
 
+	return IsTimedOut();  // when timer is done it will end the code
+
 	//Checks if the amount of ticks in at the correct or greater distance wanted
-	if (ticks_needed <= TICKS){
+	if (ticks_needed <= TICKS){ // when there are enough ticks for the encoder to stop at 2 feet
 		return true;
 	}
 	// if there are not enough ticks to stop the program/command
