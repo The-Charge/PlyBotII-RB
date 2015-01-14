@@ -22,7 +22,9 @@ DriveTwoFeet::DriveTwoFeet() {
 
 // Called just before this Command runs the first time
 void DriveTwoFeet::Initialize() {
+	SetTimeout(5);
 	Robot::driveTrain->leftFrontEncoder->Reset();
+
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -37,7 +39,7 @@ bool DriveTwoFeet::IsFinished() {
 	int ticks_needed = Robot::driveTrain->WHEELROTATIONS_PER_FOOT * Robot::driveTrain->ENCODER_TICKS_PER_REVOLUTION * 2;
 
 	//Checks if the amount of ticks in at the correct or greater distance wanted
-	if (ticks_needed <= TICKS){
+	if (TICKS >= ticks_needed || IsTimedOut()) {
 		return true;
 	}
 	// if there are not enough ticks to stop the program/command

@@ -54,15 +54,21 @@ void Drive::Execute() {
 	// Robot::driveTrain->drive(x,y,z);
 
 	float alpha = Robot::oi -> getJoystick1() -> GetThrottle();
+	float db = 0.05;
+
+	x = deadband (x, db);
+	y = deadband (y, db);
+	z = deadband (z, db);
 
 	x = delinearize(x, alpha);
 	y = delinearize (y, alpha);
 	z = delinearize (z, alpha);
 
-	float db = 0.05;
-	x = deadband (x, db);
-	y = deadband (y, db);
-	z = deadband (z, db);
+	// Disable y/z if button is held
+	if (Robot::oi -> getJoystick1() -> GetRawButton(4))
+	{
+
+	}
 
 	Robot:: driveTrain -> drive (x, y, z);
 }
