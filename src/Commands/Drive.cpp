@@ -28,6 +28,11 @@ Drive::Drive() {
 
 // Called just before this Command runs the first time
 void Drive::Initialize() {
+
+	joystickDeadband = SmartDashboard::GetNumber(JOYSTICK_DEADBAND_DASHBOARD_KEY, JOYSTICK_DEADBAND_DEFAULT);
+
+	delinearizationPower = SmartDashboard::GetNumber(DELINEARIZATION_POWER_DASHBOARD_KEY, DELINEARIZATION_POWER_DEFAULT);
+	delinearizationAlpha = SmartDashboard::GetNumber(DELINEARIZATION_ALPHA_DASHBOARD_KEY, DELINEARIZATION_ALPHA_DEFAULT);
 	
 }
 
@@ -37,18 +42,22 @@ void Drive::Execute() {
 	float y = Robot::oi->getJoystick1()->GetY();
 	float z = Robot::oi->getJoystick1()->GetZ();
 
-	double joystickDeadband = SmartDashboard::GetNumber(JOYSTICK_DEADBAND_DASHBOARD_KEY, JOYSTICK_DEADBAND_DEFAULT);
-
 	x = RobotMath::deadband(x,joystickDeadband);
 	y = RobotMath::deadband(y,joystickDeadband);
 	z = RobotMath::deadband(z,joystickDeadband);
 
-	double delinearizationPower = SmartDashboard::GetNumber(DELINEARIZATION_POWER_DASHBOARD_KEY, DELINEARIZATION_POWER_DEFAULT);
-	double delinearizationAlpha = SmartDashboard::GetNumber(DELINEARIZATION_ALPHA_DASHBOARD_KEY, DELINEARIZATION_ALPHA_DEFAULT);
-	
+
 	x = RobotMath::delinearize(x,delinearizationAlpha ,(int)delinearizationPower);
 	y = RobotMath::delinearize(y,delinearizationAlpha ,(int)delinearizationPower);
 	z = RobotMath::delinearize(z,delinearizationAlpha ,(int)delinearizationPower);
+
+	//Disable y/z if button is held
+	if(Robot::oi->getJoystick1()->GetRawButton(4))
+	{
+		y = 0;
+		z = 0;
+	}
+
 	Robot::driveTrain->drive(x,y,z);
 }
 

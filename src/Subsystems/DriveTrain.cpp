@@ -47,7 +47,7 @@ void DriveTrain::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void DriveTrain::drive(float x, float y, float z) {
-	bool useGyro = SmartDashboard::GetBoolean(USE_GYRO_DASHBOARD_KEY, USE_GYRO_DEFAULT);
+	bool useGyro = false;//SmartDashboard::GetBoolean(USE_GYRO_DASHBOARD_KEY, USE_GYRO_DEFAULT);
 	if(useGyro)
 	{
 		robotDrive41->MecanumDrive_Cartesian(x,y,z, driveGyro->GetAngle());

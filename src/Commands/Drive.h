@@ -25,10 +25,14 @@ class Drive: public Command {
 private:
 	const std::string DELINEARIZATION_POWER_DASHBOARD_KEY="Drive::delinearizationPower";
 	const std::string DELINEARIZATION_ALPHA_DASHBOARD_KEY="Drive::delinearizationAlpha";
-	const std::string JOYSTICK_DEADBAND_DASHBOARD_KEY="Drive::delinearizationPower";
-	const double DELINEARIZATION_ALPHA_DEFAULT=.5;
+	const std::string JOYSTICK_DEADBAND_DASHBOARD_KEY="Drive::joystickDeadband";
+	const double DELINEARIZATION_ALPHA_DEFAULT=.8;
 	const double DELINEARIZATION_POWER_DEFAULT=5;
-	const double JOYSTICK_DEADBAND_DEFAULT=.5;
+	const double JOYSTICK_DEADBAND_DEFAULT=.2;
+
+	double joystickDeadband;
+	double delinearizationPower;
+	double delinearizationAlpha;
 public:
 	Drive();
 	virtual void Initialize();
