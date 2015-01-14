@@ -36,6 +36,14 @@ void Drive::Execute() {
 
 	float alpha = Robot :: oi->getJoystick1()->GetThrottle();
 	float db  = .05;
+
+float GettheGyroAngle = Robot::driveTrain->GetGyroAngle();
+double GettheGyroRate = Robot::driveTrain->GetGyroRate();
+
+SmartDashboard::PutNumber("The Gyro Rate",GettheGyroRate);
+SmartDashboard::PutNumber("The Gyro Angle",GettheGyroAngle);
+
+
 	x = delinearize(x,alpha);
 	y = delinearize(y,alpha);
 	z = delinearize(z,alpha);
@@ -58,7 +66,7 @@ return input;
 
 
 float Drive::deadband(float input, float db){
-    if ((input > db) && (input<-db)){
+    if ((input > db) || (input<-db)){
     	input = input;
     }
     else{
