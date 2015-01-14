@@ -42,9 +42,18 @@ void Drive::Execute() {
 	float y = Robot::oi->getJoystick1()->GetY();
 	float z = Robot::oi->getJoystick1()->GetZ();
 
+
 	x = RobotMath::deadband(x,joystickDeadband);
 	y = RobotMath::deadband(y,joystickDeadband);
 	z = RobotMath::deadband(z,joystickDeadband);
+
+
+float GettheGyroAngle = Robot::driveTrain->GetGyroAngle();
+double GettheGyroRate = Robot::driveTrain->GetGyroRate();
+
+SmartDashboard::PutNumber("The Gyro Rate",GettheGyroRate);
+SmartDashboard::PutNumber("The Gyro Angle",GettheGyroAngle);
+
 
 
 	x = RobotMath::delinearize(x,delinearizationAlpha ,(int)delinearizationPower);
@@ -58,8 +67,9 @@ void Drive::Execute() {
 		z = 0;
 	}
 
-	Robot::driveTrain->drive(x,y,z/3);
+	Robot::driveTrain->drive(x,y,z/2);
 }
+
 
 // Make this return true when this Command no longer needs to run execute()
 bool Drive::IsFinished() {
