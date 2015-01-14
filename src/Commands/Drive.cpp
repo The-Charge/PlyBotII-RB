@@ -22,6 +22,7 @@ Drive::Drive() {
 
 // Called just before this Command runs the first time
 void Drive::Initialize() {
+	SetTimeout(2.0);
 	
 }
 
@@ -69,7 +70,7 @@ float Drive::deadband(float input, float db){
 
 // Make this return true when this Command no longer needs to run execute()
 bool Drive::IsFinished() {
-	return false;
+	return IsTimedOut();
 }
 
 // Called once after isFinished returns true

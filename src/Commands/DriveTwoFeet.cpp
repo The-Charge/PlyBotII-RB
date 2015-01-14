@@ -22,7 +22,7 @@ DriveTwoFeet::DriveTwoFeet() {
 
 // Called just before this Command runs the first time
 void DriveTwoFeet::Initialize() {
-	Robot::driveTrain->leftFrontEncoder->Reset();
+		Robot::driveTrain->leftFrontEncoder->Reset();
 }
 
 // Called repeatedly when this Command is scheduled to run
