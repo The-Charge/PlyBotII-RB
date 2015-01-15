@@ -21,7 +21,7 @@ QuarterTurnClockwise::QuarterTurnClockwise() {
 
 // Called just before this Command runs the first time
 void QuarterTurnClockwise::Initialize() {
-	 StartAngle = Robot::driveTrain->driveGyro->GetAngle();
+	 StartAngle = Robot::driveTrain->driveGyro->GetAngle(); // saves the current angle for comparing with wanted position
 	}
 
 // Called repeatedly when this Command is scheduled to run
@@ -34,7 +34,7 @@ void QuarterTurnClockwise::Execute() {
 bool QuarterTurnClockwise::IsFinished() {
 	int Angle = Robot::driveTrain->driveGyro->GetAngle();//gets angle
 
-	if(Angle >= StartAngle + 90){//checks angle to see if in the right position
+	if(Angle >= StartAngle + 90){//checks angle to see if in the right position by comparing it to StartAngle
 		return true;
 	}
 	return false;
