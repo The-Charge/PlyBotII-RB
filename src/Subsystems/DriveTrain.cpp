@@ -48,11 +48,3 @@ void DriveTrain::InitDefaultCommand() {
 void DriveTrain::drive(float x, float y, float z) {
 	robotDrive41->MecanumDrive_Cartesian(x,y,z);
 }
-
-double DriveTrain::GetGyroRate(){
-	return driveGyro->GetRate();
-
-}
-float DriveTrain::GetGyroAngle(){
-	return driveGyro->GetAngle();
-}

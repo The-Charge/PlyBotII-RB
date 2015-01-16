@@ -34,12 +34,6 @@ void Drive::Execute() {
 	float alpha = Robot::oi->getJoystick1()->GetThrottle();
 	float db = .1;
 
-	float GettheGyroAngle = Robot::driveTrain->GetGyroAngle();
-	double GettheGyroRate = Robot::driveTrain->GetGyroRate();
-
-	SmartDashboard::PutNumber("The Gyro Rate",GettheGyroRate);
-	SmartDashboard::PutNumber("The Gyro Angle",GettheGyroAngle);
-
 	x = delinearize(x,alpha);
 	y = delinearize(y,alpha);
 	z = delinearize(z,alpha);
