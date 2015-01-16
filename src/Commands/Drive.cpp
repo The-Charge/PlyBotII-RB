@@ -34,6 +34,9 @@ void Drive::Execute() {
 	float alpha = Robot::oi->getJoystick1()->GetThrottle();
 	float db = .1;
 
+	float GetTheGyroAngle = Robot::driveTrain->GetGyroAngle();
+	double GetTheGyroRate = Robot::driveTrain->GetGyroAngle();
+
 	x = delinearize(x,alpha);
 	y = delinearize(y,alpha);
 	z = delinearize(z,alpha);
