@@ -42,7 +42,6 @@ bool DriveTwoFeet::IsFinished() {
 
 	//Checks if the amount of ticks in at the correct or greater distance wanted
 	if (TICKS >= ticks_needed || IsTimedOut()){ // when there are enough ticks for the encoder to stop at 2 feet
-
 		return true;
 	}
 	// if there are not enough ticks to stop the program/command
