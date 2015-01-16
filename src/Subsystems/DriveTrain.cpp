@@ -49,8 +49,8 @@ void DriveTrain::drive(float x, float y, float z) {
 	robotDrive41->MecanumDrive_Cartesian(x,y,z);
 }
 float DriveTrain::GetGyroAngle(){
-	return driveGyro->GetAngle();
+	return driveGyro->GetAngle(); // gets the current angle from previous reset
 }
 double DriveTrain::GetGyroRate(){
-	return driveGyro->GetRate();
+	return driveGyro->GetRate(); //gets the current rate (degrees / sec) from the gyro
 }

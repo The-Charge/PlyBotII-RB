@@ -33,9 +33,12 @@ void Drive::Execute() {
 
 	float alpha = Robot::oi->getJoystick1()->GetThrottle();
 	float db = .1;
-
-	float GetTheGyroAngle = Robot::driveTrain->GetGyroAngle();
-	double GetTheGyroRate = Robot::driveTrain->GetGyroAngle();
+// creats a smartdashboard value to see what the gyro value for its angle and rate
+	float GetTheGyroAngle = Robot::driveTrain->GetGyroAngle(); //gets the value from the float in the driveTrain.cpp
+	double GetTheGyroRate = Robot::driveTrain->GetGyroAngle(); //gets the value from the double in the driveTrain.cpp
+// Puts values on the smartdashboard
+	SmartDashboard::PutNumber("The Gyro Rate", GetTheGyroRate);
+	SmartDashboard::PutNumber("The Gyro Angle",GetTheGyroAngle);
 
 	x = delinearize(x,alpha);
 	y = delinearize(y,alpha);
