@@ -54,3 +54,17 @@ float DriveTrain::GetGyroAngle(){
 double DriveTrain::GetGyroRate(){
 	return driveGyro->GetRate(); //gets the current rate (degrees / sec) from the gyro
 }
+void DriveTrain::PIDWrite(float input){
+	drive(0,input,0);
+}
+double DriveTrain::PIDGet(){
+	// must get all four encoders to get the sum of the encoders to get a set distance
+	int LeftFrontTicks = leftFrontEncoder->Get();
+	int LeftRearTicks = leftRearEncoder->Get();
+	int RightFrontTicks = rightFrontEncoder->Get();
+	int RightRearTicks = rightRearEncoder->Get();
+
+	int EncoderSum = LeftFrontTicks + LeftRearTicks + RightFrontTicks + RightRearTicks;
+
+	return EncoderSum/4.0; // must be 4.0 because it is a float
+}

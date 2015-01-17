@@ -19,7 +19,7 @@
  *
  * @author ExampleAuthor
  */
-class DriveTrain: public Subsystem {
+class DriveTrain: public Subsystem, public PIDOutput, public PIDSource {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -44,10 +44,15 @@ public:
 	const float WHEELROTATIONS_PER_FOOT = 1 / WHEELCIRCUMFERENCE_IN_FEET;
 	const int ENCODER_TICKS_PER_REVOLUTION = 220;
 
+
 	DriveTrain();
 	void InitDefaultCommand();
+
 	// drive command drives the mecanum and parameters: x,y z as rotation
 	void drive(float, float, float);
+	void PIDWrite(float);
+	double PIDGet();
+
 	float GetGyroAngle(); // value used to get the gyro's current angle
 	double GetGyroRate(); // value used to get the gyro's current rate
 };

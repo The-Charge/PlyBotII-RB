@@ -11,6 +11,7 @@
 
 #include "Drive.h"
 
+
 Drive::Drive() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -32,7 +33,8 @@ void Drive::Execute() {
 	float z = Robot::oi->getJoystick1()->GetZ();
 
 	float alpha = Robot::oi->getJoystick1()->GetThrottle();
-	float db = .1;
+	float db = DEADBSTART;
+
 // creats a smartdashboard value to see what the gyro value for its angle and rate
 	float GetTheGyroAngle = Robot::driveTrain->GetGyroAngle(); //gets the value from the float in the driveTrain.cpp
 	double GetTheGyroRate = Robot::driveTrain->GetGyroAngle(); //gets the value from the double in the driveTrain.cpp
