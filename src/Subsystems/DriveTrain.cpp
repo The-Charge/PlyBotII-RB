@@ -49,6 +49,8 @@ void DriveTrain::drive(float x, float y, float z) {
 	robotDrive41->MecanumDrive_Cartesian(x,y,z);
 }
 
+
+
 float DriveTrain:: GetGyroAngle()
 {
 	return driveGyro -> GetAngle();
@@ -56,4 +58,22 @@ float DriveTrain:: GetGyroAngle()
 double DriveTrain:: GetGyroRate()
 {
 	return driveGyro -> GetRate();
+}
+
+void DriveTrain::PIDWrite(float input)
+{
+	// pass in 3 numbers
+ drive(0, input, 0);
+}
+
+double DriveTrain:: PIDGet()
+{
+int TICKSleftfront = leftFrontEncoder->Get();
+int TICKSleftrear =  leftRearEncoder -> Get();
+int TICKSrightfront = rightFrontEncoder -> Get();
+int TICKSrightrear = rightRearEncoder -> Get();
+// takes all four encoder values and find average
+double average = (TICKSleftfront + TICKSleftrear + TICKSrightfront + TICKSrightrear)/4.0;
+
+return average;
 }
