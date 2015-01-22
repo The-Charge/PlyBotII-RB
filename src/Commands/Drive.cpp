@@ -28,7 +28,7 @@ void Drive::Initialize() {
 
 float delinearize (float input, float alpha)
 {
-	input = (alpha * input * input * input) + (( 1 - alpha) * input);
+	input = (alpha * input * input * input * input * input) + (( 1 - alpha) * input);
 	return input;
 }
 

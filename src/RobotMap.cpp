@@ -53,6 +53,7 @@ void RobotMap::init() {
 
         driveTrainRobotDrive41->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
         driveTrainRobotDrive41->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
+        // inverted
 	driveTrainDriveGyro = new Gyro(0);
 	lw->AddSensor("DriveTrain", "DriveGyro", driveTrainDriveGyro);
 	driveTrainDriveGyro->SetSensitivity(0.007);

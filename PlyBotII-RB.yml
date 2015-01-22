@@ -420,7 +420,7 @@ Children:
   Name: Commands
 Properties:
   Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: /Users/brittanyammerman/workspace,
-    extension: null, folder: true, name: Eclipse Workspace, validators: null, value: /Users/brittanyammerman/Desktop/Robotics/Programs/PlyBotII-RB}
+    extension: null, folder: true, name: Eclipse Workspace, validators: null, value: /Users/brittanyammerman/Desktop/Robotics/Programs}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
   Java Package: !!robotbuilder.data.properties.StringProperty {default: org.usfirst.frc0000,
