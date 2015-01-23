@@ -30,7 +30,7 @@ public:
 	virtual void End();
 	virtual void Interrupted();
 
-	PIDController* PIDDrivetwoFeet;
+	PIDController* PIDDrivetwoFeet; // creates the name for the PIDController
 
 };
 

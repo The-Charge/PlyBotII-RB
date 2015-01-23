@@ -54,7 +54,7 @@ float DriveTrain::GetGyroAngle(){
 double DriveTrain::GetGyroRate(){
 	return driveGyro->GetRate(); //gets the current rate (degrees / sec) from the gyro
 }
-void DriveTrain::PIDWrite(float input){
+void DriveTrain::PIDWrite(float input){ // writes to the PIDController to sent the data to the drive command
 	drive(0,input,0);
 }
 double DriveTrain::PIDGet(){
