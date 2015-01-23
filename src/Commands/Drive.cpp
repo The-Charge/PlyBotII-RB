@@ -54,7 +54,7 @@ void Drive::Execute() {
 }
 float Drive::delinearize(float input, float alpha) {
 
-	input = (alpha * input * input * input) + ((1 - alpha) * input); // to make the turns run more smoothly.
+	input = (alpha * input * input * input * input * input) + ((1 - alpha) * input); // to make the turns run more smoothly.
 	return input;
 
 }
