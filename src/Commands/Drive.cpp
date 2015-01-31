@@ -11,6 +11,7 @@
 
 #include "Drive.h"
 
+
 Drive::Drive() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -32,7 +33,14 @@ void Drive::Execute() {
 	float z = Robot::oi->getJoystick1()->GetZ();
 
 	float alpha = Robot::oi->getJoystick1()->GetThrottle();
-	float db = .05;
+	float db = DEADBSTART;
+
+// creats a smartdashboard value to see what the gyro value for its angle and rate
+	float GetTheGyroAngle = Robot::driveTrain->GetGyroAngle(); //gets the value from the float in the driveTrain.cpp
+	double GetTheGyroRate = Robot::driveTrain->GetGyroAngle(); //gets the value from the double in the driveTrain.cpp
+// Puts values on the smartdashboard
+	SmartDashboard::PutNumber("The Gyro Rate", GetTheGyroRate);
+	SmartDashboard::PutNumber("The Gyro Angle",GetTheGyroAngle);
 
 	x = delinearize(x,alpha);
 	y = delinearize(y,alpha);
@@ -46,17 +54,17 @@ void Drive::Execute() {
 }
 float Drive::delinearize(float input, float alpha) {
 
-	input = (alpha * input * input * input) + ((1 - alpha) * input);
+	input = (alpha * input * input * input * input * input) + ((1 - alpha) * input); // to make the turns run more smoothly.
 	return input;
 
 }
 float Drive::deadband(float input, float db){
-
-	if ((input > db) && (input<-db)){
+// deadband to control the sensitivity of the controller/joystick
+	if ((input > db) || (input < -db)){//checks for the input's position on the controller.
 		input = input;
 
 	}
-	else{
+	else{ // if within the deadband.
 		input = 0;
 	}
 	return input;

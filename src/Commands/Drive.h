@@ -22,6 +22,14 @@
  * @author ExampleAuthor
  */
 class Drive: public Command {
+private:
+	const std:: string DELINEAIZATION_POWER_DASHBOARD_KEY = "Drive::delinearizationPower";
+	const std::string DELINEARIZATION_ALPHA_DASHBOARD_KEY = "Drive::delinearizationAlpha";
+	const std::string JOYSTICK_DEADBAND_DASHBOARD_KEY = "Drive::delinearizationPower";
+	const double DELINEARIZATION_ALPHA_DEFAULT = .5;
+	const double DELINEARIZATION_POWER_DEFAULT = 5;
+	const double JOYSTICK_DEADBAND_DEFAULT = .5;
+	float  DEADBSTART = .2;
 public:
 	Drive();
 	float delinearize(float, float);

@@ -22,32 +22,56 @@ DriveTwoFeet::DriveTwoFeet() {
 
 // Called just before this Command runs the first time
 void DriveTwoFeet::Initialize() {
-	Robot::driveTrain->leftFrontEncoder->Reset();
+
+	SetTimeout(5.0); // sets a timer to automatically disable the code in case of a sensor fail
+
+	Robot::driveTrain->leftFrontEncoder->Reset(); // resets encoder
+
+	PIDDrivetwoFeet = new PIDController(1,0,0, Robot::driveTrain, Robot::driveTrain); //Creates a new PID Controller for the PIDDrive2ft
+	//and sends variables for the 5 things the PIDController needs to calculate the correct distance
+
+	PIDDrivetwoFeet->SetOutputRange(-1,1); // used to set the range for the PIDController
+									// lower value, upper value, no more candy one is your limit
+
+	int ticks_needed = Robot::driveTrain->WHEELROTATIONS_PER_FOOT * Robot::driveTrain->ENCODER_TICKS_PER_REVOLUTION * 2; // the amount of ticks to go 2 feet
+
+	PIDDrivetwoFeet->SetSetpoint(ticks_needed); // sets the distance needed to go 2ft forward
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveTwoFeet::Execute() {
-	Robot::driveTrain->drive(0, .25, 0);
+	//Robot::driveTrain->drive(0, .25, 0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveTwoFeet::IsFinished() {
+	if( IsTimedOut()){ // when the timmer hits zero then it ends the program automatically
+		return true;
+	}
+	return PIDDrivetwoFeet->OnTarget(); // when the PID controller reaches the right distance it will end the program
+
+/*
 	int TICKS = Robot::driveTrain->leftFrontEncoder->Get();
 	//Gets the ticks needed to drive 2 ft on the LeftFrontEncoder
 	int ticks_needed = Robot::driveTrain->WHEELROTATIONS_PER_FOOT * Robot::driveTrain->ENCODER_TICKS_PER_REVOLUTION * 2;
 
+
+
 	//Checks if the amount of ticks in at the correct or greater distance wanted
-	if (ticks_needed <= TICKS){
+	if (TICKS >= ticks_needed || IsTimedOut()){ // when there are enough ticks for the encoder to stop at 2 feet
+
 		return true;
 	}
 	// if there are not enough ticks to stop the program/command
 		return false;
+		*/
 
 }
 
 // Called once after isFinished returns true
 void DriveTwoFeet::End() {
 	Robot::driveTrain->drive(0,0,0); // Stops the Robot when the command is Finished
+	PIDDrivetwoFeet->Disable();
 }
 
 // Called when another command which requires one or more of the same

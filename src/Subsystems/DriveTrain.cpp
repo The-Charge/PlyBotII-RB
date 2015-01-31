@@ -48,3 +48,23 @@ void DriveTrain::InitDefaultCommand() {
 void DriveTrain::drive(float x, float y, float z) {
 	robotDrive41->MecanumDrive_Cartesian(x,y,z);
 }
+float DriveTrain::GetGyroAngle(){
+	return driveGyro->GetAngle(); // gets the current angle from previous reset
+}
+double DriveTrain::GetGyroRate(){
+	return driveGyro->GetRate(); //gets the current rate (degrees / sec) from the gyro
+}
+void DriveTrain::PIDWrite(float input){ // writes to the PIDController to sent the data to the drive command
+	drive(0,input,0);
+}
+double DriveTrain::PIDGet(){
+	// must get all four encoders to get the sum of the encoders to get a set distance
+	int LeftFrontTicks = leftFrontEncoder->Get();
+	int LeftRearTicks = leftRearEncoder->Get();
+	int RightFrontTicks = rightFrontEncoder->Get();
+	int RightRearTicks = rightRearEncoder->Get();
+
+	int EncoderSum = LeftFrontTicks + LeftRearTicks + RightFrontTicks + RightRearTicks;
+
+	return EncoderSum/4.0; // must be 4.0 because it is a float
+}
